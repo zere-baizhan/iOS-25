@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "orchid-watercolor-branch-blue-flowers-free-png-701751694534319rbacw3e1gn Background Removed.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

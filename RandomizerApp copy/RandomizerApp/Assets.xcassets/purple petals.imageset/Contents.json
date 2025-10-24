@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "flowers-purple-garden-summer-bright-flower-11563640059ifcgdbk05t Background Removed.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
