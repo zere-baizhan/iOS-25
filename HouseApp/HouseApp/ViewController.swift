@@ -19,72 +19,59 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInCardButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    var currentResident: Resident?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleTopBarButtons()
-        styleTextField(emailTextField)
-        styleTextField(passwordTextField)
-        styleSignInButton()
     }
-    private func styleTextField(_ textField: UITextField) {
-        textField.layer.cornerRadius = 12
-        textField.layer.masksToBounds = true
-        textField.backgroundColor = .systemGray6
-        
-        // внутренний отступ слева
-        let padding = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 44))
-        textField.leftView = padding
-        textField.leftViewMode = .always
-    }
-
-    private func styleSignInButton() {
-        signInCardButton.layer.cornerRadius = 14
-        signInCardButton.backgroundColor = UIColor.systemIndigo // или твой цвет
-        signInCardButton.setTitleColor(.white, for: .normal)
-        signInCardButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-    }
-    private func styleTopBarButtons() {
-        let buttons = [signInButton, emergencyButton]
-
-        for button in buttons {
-            button?.layer.cornerRadius = 20
-            button?.layer.masksToBounds = false
-            button?.layer.shadowColor = UIColor.black.cgColor
-            button?.layer.shadowOpacity = 0.08
-            button?.layer.shadowOffset = CGSize(width: 0, height: 2)
-            button?.layer.shadowRadius = 6
-            button?.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-            button?.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        }
-
-        // Активная – Sign In
-        signInButton.backgroundColor = UIColor(named: "PrimaryBlue")
-        signInButton.setTitleColor(.white, for: .normal)
-
-        // Неактивная – Emergency
-        emergencyButton.backgroundColor = .clear
-        emergencyButton.setTitleColor(UIColor.systemGray, for: .normal)
-    }
-    @IBAction func signInTapped(_ sender: UIButton) {
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        
-        if email.isEmpty || password.isEmpty {
-            showAlert(title: "Oops", message: "Please enter email and password.")
-            return
-        }
-        
-        // Здесь потом будет запрос к серверу
-        print("Sign in with email: \(email), password: \(password)")
-    }
-        
     private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
+    
+    @IBAction func signInTapped(_ sender: UIButton) {
+        let inputEmail = emailTextField.text ?? ""
+        let inputPassword = passwordTextField.text ?? ""
 
+        guard !inputEmail.isEmpty, !inputPassword.isEmpty else {
+            showAlert(title: "Error", message: "Enter email and password.")
+            return
+        }
 
+        let savedEmail = UserDefaults.standard.string(forKey: "userEmail")
+        let savedPassword = UserDefaults.standard.string(forKey: "userPassword")
+        let savedName = UserDefaults.standard.string(forKey: "userName")
+        let savedFlat = UserDefaults.standard.string(forKey: "userFlat")
+
+        guard inputEmail == savedEmail,
+              inputPassword == savedPassword,
+              let name = savedName,
+              let flat = savedFlat else {
+            showAlert(title: "Error", message: "Wrong email or password.")
+            return
+        }
+
+        currentResident = Resident(id: inputEmail, name: name, email: inputEmail, flat: flat)
+        performSegue(withIdentifier: "showMainTabs", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMainTabs",
+           let tabBar = segue.destination as? UITabBarController,
+           let homeVC = tabBar.viewControllers?.first as? HomeViewController {
+            homeVC.resident = currentResident
+        }
+    }
+
+        
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        print("Sign Up tapped")   // для проверки
+        performSegue(withIdentifier: "showSignUp", sender: self)
+    }
 
 }
 

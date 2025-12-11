@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DF27D3CF2EEAABFD0077EDBE /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = DF27D3CE2EEAABFD0077EDBE /* FirebaseCore */; };
+		DF27D3D52EEAB12F0077EDBE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DF27D3D42EEAB12F0077EDBE /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		DFC0976B2ED1965B001611CA /* HouseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,16 +41,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF27D3CF2EEAABFD0077EDBE /* FirebaseCore in Frameworks */,
+				DF27D3D52EEAB12F0077EDBE /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF27D3CD2EEAABFC0077EDBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DFC097622ED1965B001611CA = {
 			isa = PBXGroup;
 			children = (
 				DFC0976D2ED1965B001611CA /* HouseApp */,
+				DF27D3CD2EEAABFC0077EDBE /* Frameworks */,
 				DFC0976C2ED1965B001611CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +93,8 @@
 			);
 			name = HouseApp;
 			packageProductDependencies = (
+				DF27D3CE2EEAABFD0077EDBE /* FirebaseCore */,
+				DF27D3D42EEAB12F0077EDBE /* FirebaseFirestore */,
 			);
 			productName = HouseApp;
 			productReference = DFC0976B2ED1965B001611CA /* HouseApp.app */;
@@ -107,6 +124,9 @@
 			);
 			mainGroup = DFC097622ED1965B001611CA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DF27D3CC2EEAA8C40077EDBE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DFC0976C2ED1965B001611CA /* Products */;
 			projectDirPath = "";
@@ -159,7 +179,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zere.HouseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zere.HouseApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -188,7 +208,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zere.HouseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zere.HouseApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -337,6 +357,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DF27D3CC2EEAA8C40077EDBE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DF27D3CE2EEAABFD0077EDBE /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF27D3CC2EEAA8C40077EDBE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		DF27D3D42EEAB12F0077EDBE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF27D3CC2EEAA8C40077EDBE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DFC097632ED1965B001611CA /* Project object */;
 }
