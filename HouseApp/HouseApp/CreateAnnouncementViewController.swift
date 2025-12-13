@@ -11,6 +11,12 @@ import UIKit
 final class CreateAnnouncementViewController: UIViewController {
 
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+
 
     @IBOutlet weak var contentTextView: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
@@ -21,7 +27,6 @@ final class CreateAnnouncementViewController: UIViewController {
         super.viewDidLoad()
 
         // UI
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeTapped))
 
         cardView.layer.cornerRadius = 16
         cardView.clipsToBounds = true
@@ -30,6 +35,20 @@ final class CreateAnnouncementViewController: UIViewController {
         contentTextView.layer.cornerRadius = 10
         contentTextView.layer.borderWidth = 1
         contentTextView.layer.borderColor = UIColor.systemGray4.cgColor
+        
+        applyTexts()
+
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(applyTexts),
+                                                   name: .languageChanged,
+                                                   object: nil)
+    }
+    @objc private func applyTexts() {
+        headerLabel.text = "create_new_announcement".L
+        titleLabel.text = "title".L
+        contentLabel.text = "content".L
+        postButton.setTitle("post_announcement".L, for: .normal)
+        cancelButton.setTitle("cancel".L, for: .normal)
     }
 
     @IBAction func postTapped(_ sender: UIButton) {

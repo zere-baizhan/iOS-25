@@ -1,0 +1,15 @@
+/* 
+  ru.lproj:Localizable.strings
+  HouseApp
+
+  Created by reqwwiem on 13.12.2025.
+  
+*/
+"community_announcements" = "Объявления";
+"new_announcement" = "Новое объявление";
+"create_new_announcement" = "Создать объявление";
+"title" = "Заголовок";
+"content" = "Текст";
+"post_announcement" = "Опубликовать";
+"cancel" = "Отмена";
+"new_Badge" = "Новое";

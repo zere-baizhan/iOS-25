@@ -72,6 +72,17 @@ class ViewController: UIViewController {
         print("Sign Up tapped")   // для проверки
         performSegue(withIdentifier: "showSignUp", sender: self)
     }
+    @IBAction func ruTapped(_ sender: UIButton) {
+        LanguageManager.shared.current = "ru"
+        print("Ru button tapped")
+    }
+
+    @IBAction func enTapped(_ sender: UIButton) {
+        LanguageManager.shared.current = "en"
+        print("En button tapped")
+
+    }
+
 
 }
 

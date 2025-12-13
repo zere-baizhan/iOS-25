@@ -27,6 +27,13 @@ final class AnnouncementCell: UITableViewCell {
         authorImageView.image = UIImage(systemName: "person")
         calendarImageView.tintColor = .systemGray
         authorImageView.tintColor = .systemGray
+        newBadgeLabel.text = "New"
+        newBadgeLabel.isHidden = !a.isNew
+        newBadgeLabel.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.35)
+        newBadgeLabel.textColor = .systemBlue
+        newBadgeLabel.textAlignment = .center
+        newBadgeLabel.layer.cornerRadius = 16
+        newBadgeLabel.clipsToBounds = true
 
     }
 }

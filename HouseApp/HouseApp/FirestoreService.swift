@@ -60,4 +60,25 @@ final class FirestoreService {
                     completion(.success(list))
                 }
         }
+    
+    func sendCommunityMessage(text: String, senderId: String, senderName: String, completion: @escaping (Error?) -> Void) {
+            let data: [String: Any] = [
+                "text": text,
+                "senderId": senderId,
+                "senderName": senderName,
+                "createdAt": FieldValue.serverTimestamp()
+            ]
+
+            db.collection("community_messages").addDocument(data: data, completion: completion)
+        }
+
+        func listenCommunityMessages(onChange: @escaping (Result<[ChatMessage], Error>) -> Void) -> ListenerRegistration {
+            return db.collection("community_messages")
+                .order(by: "createdAt", descending: false)
+                .addSnapshotListener { snap, err in
+                    if let err = err { onChange(.failure(err)); return }
+                    let list = snap?.documents.compactMap { ChatMessage(doc: $0) } ?? []
+                    onChange(.success(list))
+                }
+        }
 }

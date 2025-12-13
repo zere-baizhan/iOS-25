@@ -10,7 +10,9 @@ import UIKit
 final class AnnouncementsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var newAnnouncementButton: UIButton!
     private var items: [Announcement] = []
     
 
@@ -22,13 +24,26 @@ final class AnnouncementsViewController: UIViewController {
         tableView.estimatedRowHeight = 160
         
         print("✅ AnnouncementsViewController loaded")
-        view.backgroundColor = .systemYellow
 
-        // если custom cell из xib/сториборда — зарегистрируй
-        // tableView.register(UINib(nibName: "AnnouncementCell", bundle: nil), forCellReuseIdentifier: "AnnouncementCell")
+        applyTexts()
 
+        NotificationCenter.default.addObserver(
+                   self,
+                   selector: #selector(applyTexts),
+                   name: .languageChanged,
+                   object: nil
+               )
         loadAnnouncements()
     }
+    @objc private func applyTexts() {
+        titleLabel.text = "community_announcements".L
+        newAnnouncementButton.setTitle("new_announcement".L, for: .normal)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           applyTexts()
+           tableView.reloadData()
+       }
 
     private func loadAnnouncements() {
         FirestoreService.shared.fetchAnnouncements { [weak self] result in
@@ -69,6 +84,11 @@ extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell", for: indexPath) as! AnnouncementCell
         cell.configure(with: a)
         return cell
+    }
+}
+extension String {
+    var L: String {
+        LanguageManager.shared.localized(self)
     }
 }
 

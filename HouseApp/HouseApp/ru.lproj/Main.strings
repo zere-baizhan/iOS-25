@@ -1,0 +1,162 @@
+
+/* Class = "UILabel"; text = "RiSE App"; ObjectID = "1C7-WY-w5Q"; */
+"1C7-WY-w5Q.text" = "RiSE App";
+
+/* Class = "UILabel"; text = "Welcome to your Residential Complex Portal.\nUse the navigation below to access announcements, chat with neighbors, submit maintenance reports, or manage your profile.\n"; ObjectID = "202-lU-Tat"; */
+"202-lU-Tat.text" = "Welcome to your Residential Complex Portal.\nUse the navigation below to access announcements, chat with neighbors, submit maintenance reports, or manage your profile.\n";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2jk-Xa-gpv"; */
+"2jk-Xa-gpv.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "RiSE App"; ObjectID = "5Ir-VX-zq3"; */
+"5Ir-VX-zq3.text" = "RiSE App";
+
+/* Class = "UILabel"; text = "Email Address"; ObjectID = "653-Mc-5cy"; */
+"653-Mc-5cy.text" = "Email Address";
+
+/* Class = "UIViewController"; title = "SignUpViewController"; ObjectID = "6kR-LG-FKK"; */
+"6kR-LG-FKK.title" = "SignUpViewController";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "7FK-dr-1e2"; */
+"7FK-dr-1e2.text" = "Full Name";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "8Ty-0T-w7w"; */
+"8Ty-0T-w7w.text" = "author";
+
+/* Class = "UILabel"; text = "Sign In to access your community"; ObjectID = "Baw-Iz-q0i"; */
+"Baw-Iz-q0i.text" = "Sign In to access your community";
+
+/* Class = "UIButton"; configuration.title = "Emergency"; ObjectID = "HRC-U4-H1Q"; */
+"HRC-U4-H1Q.configuration.title" = "Emergency";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "HRC-U4-H1Q"; */
+"HRC-U4-H1Q.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "Jae-1t-jA4"; */
+"Jae-1t-jA4.text" = "date";
+
+/* Class = "UILabel"; text = "Community Announcements"; ObjectID = "Jzp-vX-4Hp"; */
+"Jzp-vX-4Hp.text" = "Community Announcements";
+
+/* Class = "UILabel"; text = "Flat Number"; ObjectID = "Kpm-jl-HQz"; */
+"Kpm-jl-HQz.text" = "Flat Number";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "MKE-r7-tor"; */
+"MKE-r7-tor.configuration.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MKE-r7-tor"; */
+"MKE-r7-tor.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "example@email.com"; ObjectID = "MV6-dW-Tbv"; */
+"MV6-dW-Tbv.placeholder" = "example@email.com";
+
+/* Class = "UILabel"; text = "newBadgeLabel"; ObjectID = "MYb-ax-Sa7"; */
+"MYb-ax-Sa7.text" = "newBadgeLabel";
+
+/* Class = "UILabel"; text = "Content"; ObjectID = "N7b-Jm-6ni"; */
+"N7b-Jm-6ni.text" = "Content";
+
+/* Class = "UILabel"; text = "Welcome Back"; ObjectID = "Nnn-lr-XdB"; */
+"Nnn-lr-XdB.text" = "Welcome Back";
+
+/* Class = "UIViewController"; title = "HomeViewController"; ObjectID = "O6b-iq-wNc"; */
+"O6b-iq-wNc.title" = "HomeViewController";
+
+/* Class = "UITextField"; placeholder = "you@example.com"; ObjectID = "PjF-Kk-Ide"; */
+"PjF-Kk-Ide.placeholder" = "you@example.com";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RkZ-Lw-WyS"; */
+"RkZ-Lw-WyS.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "TitleLabel"; ObjectID = "SJk-1O-TDb"; */
+"SJk-1O-TDb.text" = "TitleLabel";
+
+/* Class = "UIViewController"; title = "AnnouncementsViewController"; ObjectID = "UFp-7t-5f2"; */
+"UFp-7t-5f2.title" = "AnnouncementsViewController";
+
+/* Class = "UILabel"; text = "Join your residential community"; ObjectID = "UOY-ts-rQa"; */
+"UOY-ts-rQa.text" = "Join your residential community";
+
+/* Class = "UIButton"; configuration.title = "Create Account"; ObjectID = "VNU-mA-RQD"; */
+"VNU-mA-RQD.configuration.title" = "Create Account";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VNU-mA-RQD"; */
+"VNU-mA-RQD.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "John Doe"; ObjectID = "WVK-k4-SdH"; */
+"WVK-k4-SdH.placeholder" = "John Doe";
+
+/* Class = "UILabel"; text = "Dont' have an account?"; ObjectID = "Wbs-YI-iNd"; */
+"Wbs-YI-iNd.text" = "Dont' have an account?";
+
+/* Class = "UIButton"; configuration.title = "Sign In"; ObjectID = "WkH-GP-WdC"; */
+"WkH-GP-WdC.configuration.title" = "Sign In";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "WkH-GP-WdC"; */
+"WkH-GP-WdC.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Cancel"; ObjectID = "YGA-7O-IZn"; */
+"YGA-7O-IZn.configuration.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "YGA-7O-IZn"; */
+"YGA-7O-IZn.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Select a tab below to get started."; ObjectID = "YZt-bg-top"; */
+"YZt-bg-top.text" = "Select a tab below to get started.";
+
+/* Class = "UILabel"; text = "Create New Announcement"; ObjectID = "Z53-ce-8l1"; */
+"Z53-ce-8l1.text" = "Create New Announcement";
+
+/* Class = "UILabel"; text = "Email Address"; ObjectID = "b88-YS-Dxy"; */
+"b88-YS-Dxy.text" = "Email Address";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "e7c-kT-jW3"; */
+"e7c-kT-jW3.text" = "Title";
+
+/* Class = "UILabel"; text = "Your Flat: A-401"; ObjectID = "gSj-ZN-1WJ"; */
+"gSj-ZN-1WJ.text" = "Your Flat: A-401";
+
+/* Class = "UILabel"; text = "contentLabel"; ObjectID = "gth-Um-upo"; */
+"gth-Um-upo.text" = "contentLabel";
+
+/* Class = "UILabel"; text = "Email: wewewe@gmail"; ObjectID = "h0T-gv-B13"; */
+"h0T-gv-B13.text" = "Email: wewewe@gmail";
+
+/* Class = "UIButton"; configuration.title = "Sign In"; ObjectID = "h5n-v2-juI"; */
+"h5n-v2-juI.configuration.title" = "Sign In";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "h5n-v2-juI"; */
+"h5n-v2-juI.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "h6R-GW-hux"; */
+"h6R-GW-hux.text" = "Confirm Password";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "is2-GH-5Y1"; */
+"is2-GH-5Y1.text" = "Password";
+
+/* Class = "UILabel"; text = "Welcome,user!"; ObjectID = "jpk-02-7sk"; */
+"jpk-02-7sk.text" = "Welcome,user!";
+
+/* Class = "UIButton"; configuration.title = "Post Announcement"; ObjectID = "mFj-ny-4iM"; */
+"mFj-ny-4iM.configuration.title" = "Post Announcement";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "mFj-ny-4iM"; */
+"mFj-ny-4iM.normalTitle" = "Button";
+
+/* Class = "UIViewController"; title = "SignInView"; ObjectID = "ohe-Np-ISc"; */
+"ohe-Np-ISc.title" = "SignInView";
+
+/* Class = "UILabel"; text = "Create Account"; ObjectID = "qhf-tl-vCs"; */
+"qhf-tl-vCs.text" = "Create Account";
+
+/* Class = "UIViewController"; title = "CreateAnnouncementViewController"; ObjectID = "sQE-Eq-6jw"; */
+"sQE-Eq-6jw.title" = "CreateAnnouncementViewController";
+
+/* Class = "UIButton"; configuration.title = "New Announcement"; ObjectID = "yKt-kQ-fAk"; */
+"yKt-kQ-fAk.configuration.title" = "New Announcement";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "yKt-kQ-fAk"; */
+"yKt-kQ-fAk.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "zcx-Ip-te9"; */
+"zcx-Ip-te9.text" = "Password";
