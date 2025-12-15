@@ -13,6 +13,39 @@ final class FirestoreService {
 
     private let db = Firestore.firestore()
     
+    func fetchProfile(completion: @escaping (Result<ResidentProfile, Error>) -> Void) {
+            let id = UserSession.shared.userId
+
+            db.collection("residents").document(id).getDocument { snap, err in
+                if let err = err { completion(.failure(err)); return }
+                let d = snap?.data() ?? [:]
+                let p = ResidentProfile(
+                    name: d["name"] as? String ?? "",
+                    email: d["email"] as? String ?? id,
+                    phone: d["phone"] as? String ?? "",
+                    emergencyPhone: d["emergencyPhone"] as? String ?? "",
+                    flat: d["flat"] as? String ?? "",
+                    floor: d["floor"] as? String ?? ""
+                )
+                completion(.success(p))
+            }
+        }
+
+        func saveProfile(_ p: ResidentProfile, completion: @escaping (Error?) -> Void) {
+            let id = UserSession.shared.userId
+
+            let data: [String: Any] = [
+                "name": p.name,
+                "email": p.email,
+                "phone": p.phone,
+                "emergencyPhone": p.emergencyPhone,
+                "flat": p.flat,
+                "floor": p.floor
+            ]
+
+            db.collection("residents").document(id).setData(data, merge: true, completion: completion)
+        }
+    
     func addAnnouncement(title: String, content: String, author: String, completion: @escaping (Error?) -> Void) {
             let data: [String: Any] = [
                 "title": title,
@@ -27,15 +60,39 @@ final class FirestoreService {
         }
 
     func saveResident(_ resident: Resident, completion: @escaping (Error?) -> Void) {
-        let data: [String: Any] = [
+        var data: [String: Any] = [
             "name": resident.name,
             "email": resident.email,
             "flat": resident.flat
         ]
 
+        data["phone"] = resident.phone ?? ""
+        data["emergencyContact"] = resident.emergencyContact ?? ""
+        data["floor"] = resident.floor ?? ""
+
         db.collection("residents")
-          .document(resident.id)         // id = email
-          .setData(data, completion: completion)
+            .document(resident.id)
+            .setData(data, merge: true, completion: completion) // merge важно!
+    }
+    func fetchResident(id: String, completion: @escaping (Result<Resident, Error>) -> Void) {
+        db.collection("residents").document(id).getDocument { snap, err in
+            if let err = err { completion(.failure(err)); return }
+            guard let d = snap?.data() else {
+                completion(.failure(NSError(domain: "no_data", code: 0)))
+                return
+            }
+
+            let r = Resident(
+                id: id,
+                name: d["name"] as? String ?? "",
+                email: d["email"] as? String ?? id,
+                flat: d["flat"] as? String ?? "",
+                phone: (d["phone"] as? String).flatMap { $0.isEmpty ? nil : $0 },
+                emergencyContact: (d["emergencyContact"] as? String).flatMap { $0.isEmpty ? nil : $0 },
+                floor: (d["floor"] as? String).flatMap { $0.isEmpty ? nil : $0 }
+            )
+            completion(.success(r))
+        }
     }
 
 
@@ -80,5 +137,36 @@ final class FirestoreService {
                     let list = snap?.documents.compactMap { ChatMessage(doc: $0) } ?? []
                     onChange(.success(list))
                 }
+        }
+    func listenReports(completion: @escaping (Result<[MaintenanceReport], Error>) -> Void) -> ListenerRegistration {
+            db.collection("maintenance_reports")
+                .order(by: "createdAt", descending: true)
+                .addSnapshotListener { snap, err in
+                    if let err = err { completion(.failure(err)); return }
+                    let list: [MaintenanceReport] = snap?.documents.map {
+                        MaintenanceReport(id: $0.documentID, data: $0.data())
+                    } ?? []
+                    completion(.success(list))
+                }
+        }
+    func createReport(title: String,
+                          category: String,
+                          details: String,
+                          createdById: String,
+                          createdByName: String,
+                          completion: @escaping (Error?) -> Void) {
+
+            let data: [String: Any] = [
+                "title": title,
+                "category": category,
+                "details": details,
+                "status": "pending",
+                "resolutionText": "",
+                "createdAt": Timestamp(date: Date()),
+                "createdById": createdById,
+                "createdByName": createdByName
+            ]
+
+            db.collection("maintenance_reports").addDocument(data: data, completion: completion)
         }
 }

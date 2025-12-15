@@ -13,33 +13,71 @@ final class ChatCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
 
     @IBOutlet weak var bubbleStack: UIStackView!
-    
-    @IBOutlet weak var bubbleLeading: NSLayoutConstraint!
+    private var leadingC: NSLayoutConstraint!
+       private var trailingC: NSLayoutConstraint!
 
-    @IBOutlet weak var bubbleTrailing: NSLayoutConstraint!
-    private static let timeFormatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "HH:mm"
-        return f
-    }()
+       private static let timeFormatter: DateFormatter = {
+           let f = DateFormatter()
+           f.dateFormat = "HH:mm"
+           return f
+       }()
 
-    func configure(msg: ChatMessage, isMine: Bool) {
-        messageLabel.text = msg.text
-        timeLabel.text = Self.timeFormatter.string(from: msg.createdAt)
+       override func awakeFromNib() {
+           super.awakeFromNib()
 
-        // “пузырь” вправо/влево
-        bubbleLeading.isActive = !isMine
-        bubbleTrailing.isActive = isMine
+           selectionStyle = .none
 
-        messageLabel.textAlignment = isMine ? .right : .left
-        bubbleStack.alignment = isMine ? .trailing : .leading
-        
-        if bubbleLeading == nil || bubbleTrailing == nil {
-               print("❌ OUTLETS NIL: bubbleLeading:", bubbleLeading as Any,
-                     "bubbleTrailing:", bubbleTrailing as Any,
-                     "stack:", bubbleStack as Any)
+           // стиль пузыря
+           bubbleStack.layer.cornerRadius = 14
+           bubbleStack.clipsToBounds = true
+
+           messageLabel.numberOfLines = 0
+
+           // самое важное: создаём констрейнты в коде
+           bubbleStack.translatesAutoresizingMaskIntoConstraints = false
+
+           leadingC = bubbleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
+           trailingC = bubbleStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+
+           // вертикально
+           NSLayoutConstraint.activate([
+            bubbleStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+               bubbleStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+
+               // ограничение ширины пузыря
+               bubbleStack.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.75)
+           ])
+       }
+
+       override func prepareForReuse() {
+           super.prepareForReuse()
+           leadingC?.isActive = false
+           trailingC?.isActive = false
+       }
+
+       func configure(msg: ChatMessage, currentUserId: String) {
+           let isMine = (msg.senderId == currentUserId)
+
+           messageLabel.text = msg.text
+           timeLabel.text = Self.timeFormatter.string(from: msg.createdAt)
+
+           // включаем только одну сторону
+           leadingC.isActive = !isMine
+           trailingC.isActive = isMine
+
+           // стиль: моё справа / чужое слева
+           if isMine {
+               bubbleStack.backgroundColor = UIColor.systemBlue
+               messageLabel.textColor = .white
+               timeLabel.textColor = UIColor.white.withAlphaComponent(0.8)
+               messageLabel.textAlignment = .left
+               timeLabel.textAlignment = .right
+           } else {
+               bubbleStack.backgroundColor = UIColor.systemGray6
+               messageLabel.textColor = .label
+               timeLabel.textColor = .secondaryLabel
+               messageLabel.textAlignment = .left
+               timeLabel.textAlignment = .left
            }
-    }
-}
-
-
+       }
+   }

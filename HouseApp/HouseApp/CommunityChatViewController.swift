@@ -4,8 +4,8 @@
 //
 //  Created by reqwwiem on 14.12.2025.
 //
-import Foundation
 import UIKit
+import FirebaseAuth
 import FirebaseFirestore
 
 final class CommunityChatViewController: UIViewController {
@@ -16,8 +16,13 @@ final class CommunityChatViewController: UIViewController {
     private var items: [ChatMessage] = []
     private var listener: ListenerRegistration?
 
+    private var currentUserId: String {
+        Auth.auth().currentUser?.uid ?? "unknown"
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -37,19 +42,20 @@ final class CommunityChatViewController: UIViewController {
         }
     }
 
-    deinit {
-        listener?.remove()
-    }
+    deinit { listener?.remove() }
 
     @IBAction func sendTapped(_ sender: UIButton) {
         let text = (messageTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
 
-        // ⚠️ тут возьми данные текущего пользователя
-        let senderId = UserSession.shared.userId   // например email
-        let senderName = UserSession.shared.name
+        let senderId = currentUserId
+        let senderName = Auth.auth().currentUser?.email ?? "User"
 
-        FirestoreService.shared.sendCommunityMessage(text: text, senderId: senderId, senderName: senderName) { [weak self] err in
+        FirestoreService.shared.sendCommunityMessage(
+            text: text,
+            senderId: senderId,
+            senderName: senderName
+        ) { [weak self] err in
             DispatchQueue.main.async {
                 if let err = err { print("🔥 send error:", err) }
                 else { self?.messageTextField.text = "" }
@@ -70,7 +76,7 @@ extension CommunityChatViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let msg = items[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
-        cell.configure(msg: msg, isMine: msg.senderId == UserSession.shared.userId)
+        cell.configure(msg: msg, currentUserId: currentUserId)
         return cell
     }
 }
