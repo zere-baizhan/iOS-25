@@ -33,7 +33,8 @@ final class MaintenanceReportsViewController: UIViewController {
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 180
-
+        
+        applyTexts()
         styleFilterButtons()
         setSelectedFilter(.all)
 
@@ -48,6 +49,10 @@ final class MaintenanceReportsViewController: UIViewController {
                 }
             }
         }
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applyTexts),
+                                               name: .languageChanged,
+                                               object: nil)
     }
 
     deinit { listener?.remove() }
@@ -58,6 +63,14 @@ final class MaintenanceReportsViewController: UIViewController {
             $0?.layer.borderWidth = 1
             $0?.layer.borderColor = UIColor.systemGray4.cgColor
         }
+    }
+    @objc private func applyTexts() {
+        allButton.setTitle("allbutton".L, for: .normal)
+        pendingButton.setTitle("report_status_pending".L, for: .normal)
+        inProgressButton.setTitle("report_status_in_progress".L, for: .normal)
+        resolvedButton.setTitle("report_status_resolved".L, for: .normal)
+        newReportButton.setTitle("new_badge".L, for: .normal)
+
     }
 
     private func setSelectedFilter(_ f: ReportFilter) {

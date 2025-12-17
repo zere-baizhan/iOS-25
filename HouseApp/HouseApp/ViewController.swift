@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
     
@@ -34,40 +35,63 @@ class ViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: UIButton) {
-        let inputEmail = emailTextField.text ?? ""
-        let inputPassword = passwordTextField.text ?? ""
+        let email = (emailTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = (passwordTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
 
-        guard !inputEmail.isEmpty, !inputPassword.isEmpty else {
+        guard !email.isEmpty, !password.isEmpty else {
             showAlert(title: "Error", message: "Enter email and password.")
             return
         }
 
-        let savedEmail = UserDefaults.standard.string(forKey: "userEmail")
-        let savedPassword = UserDefaults.standard.string(forKey: "userPassword")
-        let savedName = UserDefaults.standard.string(forKey: "userName")
-        let savedFlat = UserDefaults.standard.string(forKey: "userFlat")
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+            guard let self = self else { return }
 
-        guard inputEmail == savedEmail,
-              inputPassword == savedPassword,
-              let name = savedName,
-              let flat = savedFlat else {
-            showAlert(title: "Error", message: "Wrong email or password.")
-            return
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                }
+                return
+            }
+
+            guard let uid = result?.user.uid else {
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Error", message: "No user id.")
+                }
+                return
+            }
+
+            // обновим сессию
+            UserSession.shared.uid = uid
+            UserSession.shared.email = result?.user.email ?? email
+
+            // загрузим профиль из Firestore users/{uid}
+            FirestoreService.shared.fetchResident(id: uid) { res in
+                DispatchQueue.main.async {
+                    switch res {
+                    case .success(let resident):
+                        self.currentResident = resident
+                        self.performSegue(withIdentifier: "showMainTabs", sender: self)
+                    case .failure(let err):
+                        self.showAlert(title: "Error", message: "Profile not found: \(err.localizedDescription)")
+                    }
+                }
+            }
         }
-
-        currentResident = Resident(id: inputEmail, name: name, email: inputEmail, flat: flat)
-        performSegue(withIdentifier: "showMainTabs", sender: self)
     }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMainTabs",
-           let tabBar = segue.destination as? UITabBarController,
-           let homeVC = tabBar.viewControllers?.first as? HomeViewController {
-            homeVC.resident = currentResident
+           let tabBar = segue.destination as? UITabBarController {
+
+            let first = tabBar.viewControllers?.first
+
+            if let nav = first as? UINavigationController,
+               let homeVC = nav.viewControllers.first as? HomeViewController {
+                homeVC.resident = currentResident
+            } else if let homeVC = first as? HomeViewController {
+                homeVC.resident = currentResident
+            }
         }
     }
-
-        
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         print("Sign Up tapped")   // для проверки
         performSegue(withIdentifier: "showSignUp", sender: self)

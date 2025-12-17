@@ -10,6 +10,8 @@ import FirebaseFirestore
 
 final class CommunityChatViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
 
@@ -40,7 +42,18 @@ final class CommunityChatViewController: UIViewController {
                 }
             }
         }
+        applyTexts()
     }
+    @objc private func applyTexts() {
+        titleLabel.text = "community_chat".L
+        subtitleLabel.text="community_subtitle".L
+    }
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           applyTexts()
+           tableView.reloadData()
+       }
+    
 
     deinit { listener?.remove() }
 

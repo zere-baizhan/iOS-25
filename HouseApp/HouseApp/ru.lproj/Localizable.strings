@@ -12,4 +12,82 @@
 "content" = "Текст";
 "post_announcement" = "Опубликовать";
 "cancel" = "Отмена";
-"new_Badge" = "Новое";
+"new_badge" = "Новое";
+
+"welcome_title" = "Добро Пожаловать!";
+"welcome_subtitle" = "Присоединяйтесь к вашему жилому обществу";
+
+"sign_in" = "Вход";
+"sign_up" = "Зарегистрироваться";
+"log_out" = "Выйти";
+
+"dont_have_account" = "Нет аккаунта?";
+"already_have_account" = "Уже есть аккаунт?";
+"sign_in_to_access" = "Войдите чтобы получить доступ к вашему обществу";
+
+"email" = "Почта";
+"password" = "Пароль";
+"confirm_password" = "Потвердите пароль";
+
+"full_name" = "Полное имя";
+"flat_number" = "Номер квартиры";
+"floor" = "Этаж";
+
+"phone_number" = "Номер Телефона";
+"emergency_contact" = "Экстренный контакт";
+
+"continue" = "Продолжить";
+"save" = "Сохранить";
+"edit" = "Изменить";
+"delete" = "Удалить";
+"cancel" = "Отмена";
+"submit" = "Отправить";
+
+"home" = "Дом";
+"welcome_user" = "Добро пожаловать, %@!";
+"your_flat_fmt" = "Ваша квартира: %@";
+"email_fmt" = "Почта: %@";
+"dash" = "—";
+
+"selection" = "Выберите вкладку ниже, чтобы начать.";
+"description" = "Добро пожаловать в портал жилого комплекса.\nИспользуйте меню снизу, чтобы читать объявления, общаться с соседями, отправлять заявки на ремонт или управлять профилем.";
+
+"announcement_title" = "Название";
+"announcement_content" = "Содержание";
+"post_announcement" = "Опубликовать";
+
+"new_badge" = "Новое";
+
+"community_chat" = "Чат Сообщества";
+"message_placeholder" = "Наберите сообщение...";
+"send" = "Отправить";
+"community_subtitle"="Общайтесь со своими соседями";
+
+"maintenance_reports" = "Отчеты о техническом обслуживании";
+"report_problem" = "Сообщить о проблеме";
+
+"problem_title" = "Название проблемы";
+"problem_category" = "Категория";
+"problem_description" = "Описание";
+
+
+"report_status_pending" = "Ожидается";
+"report_status_in_progress" = "В процессе";
+"report_status_resolved" = "Решено";
+"allbutton" = "Все";
+"submitted_report" = "Отправлено:";
+
+"resolution" = "Резолюция";
+
+"emergency" = "Чрезвычайная ситуация";
+"emergency_call" = "Вызов экстренных служб";
+"send_emergency_alert" = "Отправить экстренную службу";
+
+"error" = "Ошибка";
+"success" = "Успешно";
+
+"fill_all_fields" = "Заполните все поля";
+"passwords_do_not_match" = "Пароли не совпадают";
+
+"account_created" = "Учетная запись успешно создана";
+"wrong_email_or_password" = "Неверный адрес электронной почты или пароль";

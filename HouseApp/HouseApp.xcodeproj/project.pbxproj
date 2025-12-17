@@ -9,14 +9,10 @@
 /* Begin PBXBuildFile section */
 		DF27D3CF2EEAABFD0077EDBE /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = DF27D3CE2EEAABFD0077EDBE /* FirebaseCore */; };
 		DF27D3D52EEAB12F0077EDBE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DF27D3D42EEAB12F0077EDBE /* FirebaseFirestore */; };
-		DF3174BC2EEF34AE002BA171 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3174BB2EEF34AE002BA171 /* ProfileViewController.swift */; };
-		DF3174BE2EEF5082002BA171 /* ResidentProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3174BD2EEF5082002BA171 /* ResidentProfile.swift */; };
 		DFA1178D2EEEF66700A34681 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DFA1178C2EEEF66700A34681 /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DF3174BB2EEF34AE002BA171 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		DF3174BD2EEF5082002BA171 /* ResidentProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentProfile.swift; sourceTree = "<group>"; };
 		DFC0976B2ED1965B001611CA /* HouseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -65,8 +61,6 @@
 		DFC097622ED1965B001611CA = {
 			isa = PBXGroup;
 			children = (
-				DF3174BD2EEF5082002BA171 /* ResidentProfile.swift */,
-				DF3174BB2EEF34AE002BA171 /* ProfileViewController.swift */,
 				DFC0976D2ED1965B001611CA /* HouseApp */,
 				DF27D3CD2EEAABFC0077EDBE /* Frameworks */,
 				DFC0976C2ED1965B001611CA /* Products */,
@@ -162,8 +156,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF3174BE2EEF5082002BA171 /* ResidentProfile.swift in Sources */,
-				DF3174BC2EEF34AE002BA171 /* ProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,12 +6,28 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 final class UserSession {
     static let shared = UserSession()
     private init() {}
 
-    // Минимально нужные данные
-    var userId: String = "test@example.com"   // позже заменим на Firebase Auth
-    var name: String = "Admin"
+    var uid: String = ""
+    var email: String = ""
+    var name: String = ""
+
+    var isLoggedIn: Bool { !uid.isEmpty }
+
+    func updateFromAuth(name: String? = nil) {
+        guard let user = Auth.auth().currentUser else { return }
+        self.uid = user.uid
+        self.email = user.email ?? ""
+        if let name { self.name = name }
+    }
+
+    func clear() {
+        uid = ""
+        email = ""
+        name = ""
+    }
 }

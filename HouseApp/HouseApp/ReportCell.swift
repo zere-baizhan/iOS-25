@@ -26,11 +26,18 @@ final class ReportCell: UITableViewCell {
         f.dateFormat = "MMMM d, yyyy"
         return f
     }()
+    @objc private func applyTexts() {
+        submittedLabel.text = "submitted_report".L
+        resolvedLabel.text = "report_status_resolved".L
+
+    }
 
     func configure(_ r: MaintenanceReport) {
         titleLabel.text = r.title
         categoryLabel.text = r.category
         detailsLabel.text = r.details
+        
+        applyTexts()
 
         // badge
         switch r.status {

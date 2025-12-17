@@ -56,7 +56,7 @@ final class ChatCell: UITableViewCell {
        }
 
        func configure(msg: ChatMessage, currentUserId: String) {
-           let isMine = (msg.senderId == currentUserId)
+           let isMine = (msg.senderId == UserSession.shared.uid)
 
            messageLabel.text = msg.text
            timeLabel.text = Self.timeFormatter.string(from: msg.createdAt)

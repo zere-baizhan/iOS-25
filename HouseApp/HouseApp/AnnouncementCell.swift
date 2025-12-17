@@ -34,6 +34,12 @@ final class AnnouncementCell: UITableViewCell {
         newBadgeLabel.textAlignment = .center
         newBadgeLabel.layer.cornerRadius = 16
         newBadgeLabel.clipsToBounds = true
+        applyTexts()
 
     }
+    @objc private func applyTexts() {
+        newBadgeLabel.text = "new_badge".L
+    }
+ 
+    
 }

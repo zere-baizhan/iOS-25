@@ -15,6 +15,9 @@ final class AnnouncementsViewController: UIViewController {
     @IBOutlet weak var newAnnouncementButton: UIButton!
     private var items: [Announcement] = []
     
+    private var allItems: [Announcement] = []
+    private var filteredItems: [Announcement] = []
+    private var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ final class AnnouncementsViewController: UIViewController {
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 160
-        
+        setupSearch()
         print("✅ AnnouncementsViewController loaded")
 
         applyTexts()
@@ -38,23 +41,52 @@ final class AnnouncementsViewController: UIViewController {
     @objc private func applyTexts() {
         titleLabel.text = "community_announcements".L
         newAnnouncementButton.setTitle("new_announcement".L, for: .normal)
+        searchController?.searchBar.placeholder = "search_announcements".L
     }
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
            applyTexts()
            tableView.reloadData()
        }
+    
+    private func setupSearch() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.placeholder = "search_announcements".L
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
 
     private func loadAnnouncements() {
         FirestoreService.shared.fetchAnnouncements { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let list):
-                    self?.items = list
+                    self?.allItems = list
+                    let searchText = self?.searchController.searchBar.text ?? ""
+                    if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        self?.filteredItems = list
+                    } else {
+                        self?.applyFilter(searchText)
+                    }
                     self?.tableView.reloadData()
                 case .failure(let err):
                     print("🔥 fetchAnnouncements error:", err)
                 }
+            }
+        }
+    }
+    
+    private func applyFilter(_ text: String) {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        if trimmed.isEmpty {
+            filteredItems = allItems
+        } else {
+            filteredItems = allItems.filter {
+                $0.title.lowercased().contains(trimmed) || $0.content.lowercased().contains(trimmed)
             }
         }
     }
@@ -76,14 +108,21 @@ final class AnnouncementsViewController: UIViewController {
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items.count
+        filteredItems.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let a = items[indexPath.row]
+        let a = filteredItems[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell", for: indexPath) as! AnnouncementCell
         cell.configure(with: a)
         return cell
+    }
+}
+extension AnnouncementsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let text = searchController.searchBar.text ?? ""
+        applyFilter(text)
+        tableView.reloadData()
     }
 }
 extension String {
@@ -91,4 +130,3 @@ extension String {
         LanguageManager.shared.localized(self)
     }
 }
-
