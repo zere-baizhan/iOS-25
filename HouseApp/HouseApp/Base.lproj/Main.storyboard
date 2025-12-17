@@ -995,6 +995,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                         <constraint firstItem="XN8-iG-JR7" firstAttribute="top" secondItem="WGO-cE-Ldc" secondAttribute="bottom" constant="8" id="Dgq-Cf-kgL"/>
                                                         <constraint firstItem="Bzd-Iu-IVf" firstAttribute="leading" secondItem="XMG-9p-Xh4" secondAttribute="leading" constant="16" id="Idq-9v-dfb"/>
                                                         <constraint firstItem="SJk-1O-TDb" firstAttribute="top" secondItem="XMG-9p-Xh4" secondAttribute="top" constant="16" id="X8X-S1-yvM"/>
+                                                        <constraint firstItem="MYb-ax-Sa7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XMG-9p-Xh4" secondAttribute="leading" constant="20" symbolic="YES" id="YXm-a2-1yU"/>
                                                         <constraint firstAttribute="trailing" secondItem="WGO-cE-Ldc" secondAttribute="trailing" constant="-16" id="ayP-lq-9Qg"/>
                                                         <constraint firstItem="SJk-1O-TDb" firstAttribute="leading" secondItem="XMG-9p-Xh4" secondAttribute="leading" constant="16" id="dEC-E7-4RU"/>
                                                         <constraint firstAttribute="trailing" secondItem="Bzd-Iu-IVf" secondAttribute="trailing" constant="-16" id="fPD-No-31g"/>
@@ -1083,13 +1084,13 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="pmJ-IN-Pu5" userLabel="bubbleStack">
                                                     <rect key="frame" x="16" y="10" width="361" height="37"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="messageText" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ4-cP-8Wv">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="messageText" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ4-cP-8Wv">
                                                             <rect key="frame" x="0.0" y="0.0" width="99" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="timeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhg-Xr-mvz">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhg-Xr-mvz">
                                                             <rect key="frame" x="0.0" y="22.333333333333336" width="55.333333333333336" height="14.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
@@ -1117,7 +1118,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                 <rect key="frame" x="0.0" y="651" width="393" height="84"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wFM-cY-16f">
-                                        <rect key="frame" x="16" y="20" width="297" height="44"/>
+                                        <rect key="frame" x="16" y="20" width="298.33333333333331" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="gOp-2D-akm"/>
                                         </constraints>
@@ -1125,10 +1126,9 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALk-rj-Ymk">
-                                        <rect key="frame" x="325" y="16" width="52" height="52"/>
+                                        <rect key="frame" x="326.33333333333331" y="22" width="50.666666666666686" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="7Tf-Le-Qau"/>
-                                            <constraint firstAttribute="width" constant="52" id="aKX-As-UbA"/>
+                                            <constraint firstAttribute="height" constant="40" id="7Tf-Le-Qau"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="paperplane.fill" catalog="system"/>
@@ -1546,45 +1546,45 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
         <scene sceneID="OFX-3V-UuT">
             <objects>
                 <viewController storyboardIdentifier="      " title="ProfileViewController" id="g9C-2k-pz6" customClass="ProfileViewController" customModule="HouseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="W5y-o4-4Tt">
+                    <view key="view" contentMode="scaleToFill" id="W5y-o4-4Tt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IM1-15-cnp">
-                                <rect key="frame" x="0.0" y="162" width="56" height="573"/>
+                                <rect key="frame" x="0.0" y="162" width="230" height="573"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHx-OU-Cdn" customClass="Profile">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="474.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="474.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="i0K-UN-QFM">
-                                                <rect key="frame" x="16" y="16" width="24" height="474.66666666666669"/>
+                                                <rect key="frame" x="16" y="16" width="198" height="474.66666666666669"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-dp-EXc" userLabel="TopStack">
-                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="133.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="198" height="133.33333333333334"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-lg-1FO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="198" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="24" id="Zht-G5-Ong"/>
                                                                     <constraint firstAttribute="height" constant="24" id="lfo-cp-pya"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inz-nA-e7X" userLabel="Name">
-                                                                <rect key="frame" x="0.0" y="24" width="24" height="20.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="24" width="198" height="20.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resident Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqg-Jl-qMP">
-                                                                <rect key="frame" x="0.0" y="44.333333333333343" width="24" height="20.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="44.333333333333343" width="198" height="20.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nli-hK-6FZ">
-                                                                <rect key="frame" x="0.0" y="64.666666666666657" width="24" height="34.333333333333343"/>
+                                                                <rect key="frame" x="0.0" y="64.666666666666657" width="198" height="34.333333333333343"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="tinted" title="Edit Button">
+                                                                <buttonConfiguration key="configuration" style="tinted" image="pencil" catalog="system" title="Edit Button">
                                                                     <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <color key="baseBackgroundColor" systemColor="systemCyanColor"/>
                                                                 </buttonConfiguration>
@@ -1593,10 +1593,10 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                 </connections>
                                                             </button>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-Gn-lRt" userLabel="Buttons">
-                                                                <rect key="frame" x="0.0" y="99" width="24" height="34.333333333333343"/>
+                                                                <rect key="frame" x="0.0" y="99" width="198" height="34.333333333333343"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQj-ap-oJg">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="12" height="34.333333333333336"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="34.333333333333336"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" image="square.and.arrow.down" catalog="system" title="Save">
                                                                             <color key="baseBackgroundColor" systemColor="systemGrayColor"/>
@@ -1606,7 +1606,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdC-3l-S7K">
-                                                                        <rect key="frame" x="12" y="0.0" width="12" height="34.333333333333336"/>
+                                                                        <rect key="frame" x="99" y="0.0" width="99" height="34.333333333333336"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" image="xmark" catalog="system" title="Cancel">
                                                                             <color key="baseBackgroundColor" red="0.85882353779999998" green="0.5176470876" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1619,18 +1619,23 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                             </stackView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.37254902719999999" green="0.44313728810000003" blue="0.53333336109999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tw3-1F-8Su" userLabel="Personal Info">
-                                                        <rect key="frame" x="0.0" y="153.33333333333331" width="24" height="176.33333333333331"/>
+                                                        <rect key="frame" x="0.0" y="153.33333333333331" width="198" height="176.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBd-fS-xgK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="20.333333333333332"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="198" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="06l-Le-PzN">
-                                                                <rect key="frame" x="0.0" y="20.333333333333371" width="24" height="18"/>
+                                                                <rect key="frame" x="0.0" y="20.333333333333371" width="198" height="18"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EEi-mh-x6P">
                                                                         <rect key="frame" x="0.0" y="3.3333333333332948" width="15" height="11.66666666666667"/>
@@ -1640,7 +1645,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bR6-YS-Lff">
-                                                                        <rect key="frame" x="15" y="0.0" width="9" height="18"/>
+                                                                        <rect key="frame" x="15" y="0.0" width="183" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1648,13 +1653,13 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                 </subviews>
                                                             </stackView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w9j-ZO-pXR" userLabel="NameText">
-                                                                <rect key="frame" x="0.0" y="38.333333333333371" width="24" height="21"/>
+                                                                <rect key="frame" x="0.0" y="38.333333333333371" width="198" height="21"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-ta-dWf">
-                                                                <rect key="frame" x="0.0" y="59.333333333333371" width="24" height="18"/>
+                                                                <rect key="frame" x="0.0" y="59.333333333333371" width="198" height="18"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Efi-z4-TUa">
                                                                         <rect key="frame" x="0.0" y="3.3333333333332931" width="15" height="12.000000000000004"/>
@@ -1664,7 +1669,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqA-jU-cqi">
-                                                                        <rect key="frame" x="15" y="0.0" width="9" height="18"/>
+                                                                        <rect key="frame" x="15" y="0.0" width="183" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1672,13 +1677,13 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                 </subviews>
                                                             </stackView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQe-Ym-rot" userLabel="EmailText">
-                                                                <rect key="frame" x="0.0" y="77.333333333333371" width="24" height="21"/>
+                                                                <rect key="frame" x="0.0" y="77.333333333333371" width="198" height="21"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PfP-RV-Vr3">
-                                                                <rect key="frame" x="0.0" y="98.333333333333371" width="24" height="18"/>
+                                                                <rect key="frame" x="0.0" y="98.333333333333371" width="198" height="18"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-tr-kvz">
                                                                         <rect key="frame" x="0.0" y="2.6666666666666288" width="15" height="13"/>
@@ -1688,7 +1693,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyA-OV-j6z">
-                                                                        <rect key="frame" x="15" y="0.0" width="9" height="18"/>
+                                                                        <rect key="frame" x="15" y="0.0" width="183" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1696,13 +1701,13 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                 </subviews>
                                                             </stackView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q2a-mt-wyZ" userLabel="PhoneText">
-                                                                <rect key="frame" x="0.0" y="116.33333333333337" width="24" height="21"/>
+                                                                <rect key="frame" x="0.0" y="116.33333333333337" width="198" height="21"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Aac-NA-Ku3">
-                                                                <rect key="frame" x="0.0" y="137.33333333333337" width="24" height="18"/>
+                                                                <rect key="frame" x="0.0" y="137.33333333333337" width="198" height="18"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light.beacon.min.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ipF-5t-Zv3">
                                                                         <rect key="frame" x="0.0" y="2.6666666666666288" width="15" height="12.333333333333332"/>
@@ -1712,7 +1717,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8z-X8-5e0">
-                                                                        <rect key="frame" x="15" y="0.0" width="9" height="18"/>
+                                                                        <rect key="frame" x="15" y="0.0" width="183" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1720,7 +1725,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                                 </subviews>
                                                             </stackView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jjQ-eA-cow" userLabel="EmergencyText">
-                                                                <rect key="frame" x="0.0" y="155.33333333333337" width="24" height="21"/>
+                                                                <rect key="frame" x="0.0" y="155.33333333333337" width="198" height="21"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1728,34 +1733,34 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAj-YJ-D7x">
-                                                        <rect key="frame" x="0.0" y="349.66666666666663" width="24" height="1"/>
+                                                        <rect key="frame" x="0.0" y="349.66666666666663" width="198" height="1"/>
                                                         <color key="backgroundColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="fu7-eV-67W"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Coq-pR-UFG" userLabel="Residence Info">
-                                                        <rect key="frame" x="0.0" y="370.66666666666663" width="24" height="104"/>
+                                                        <rect key="frame" x="0.0" y="370.66666666666663" width="198" height="104"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flat Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpe-bD-WLm">
-                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="18"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="198" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2du-dn-fOV" userLabel="FlatNumberText">
-                                                                <rect key="frame" x="0.0" y="18" width="24" height="34"/>
+                                                                <rect key="frame" x="0.0" y="18" width="198" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Floor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5C-Hx-rTf">
-                                                                <rect key="frame" x="0.0" y="52" width="24" height="18"/>
+                                                                <rect key="frame" x="0.0" y="52" width="198" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TDC-A7-AYx" userLabel="FloorText">
-                                                                <rect key="frame" x="0.0" y="70" width="24" height="34"/>
+                                                                <rect key="frame" x="0.0" y="70" width="198" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1774,12 +1779,10 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="RIH-oM-XU3" firstAttribute="trailing" secondItem="VHx-OU-Cdn" secondAttribute="trailing" id="CuT-9W-hxB"/>
-                                    <constraint firstAttribute="bottom" secondItem="VHx-OU-Cdn" secondAttribute="bottom" id="Jgj-gl-rRB"/>
-                                    <constraint firstItem="VHx-OU-Cdn" firstAttribute="leading" secondItem="IM1-15-cnp" secondAttribute="leading" id="KiY-dg-NjW"/>
-                                    <constraint firstItem="VHx-OU-Cdn" firstAttribute="leading" secondItem="RIH-oM-XU3" secondAttribute="leading" id="Suo-ma-44r"/>
-                                    <constraint firstAttribute="trailing" secondItem="VHx-OU-Cdn" secondAttribute="trailing" constant="51" id="X04-VL-0Pq"/>
-                                    <constraint firstItem="VHx-OU-Cdn" firstAttribute="top" secondItem="IM1-15-cnp" secondAttribute="top" id="keU-65-k9D"/>
+                                    <constraint firstItem="VHx-OU-Cdn" firstAttribute="trailing" secondItem="K0r-ZN-XAv" secondAttribute="trailing" id="CuT-9W-hxB"/>
+                                    <constraint firstItem="VHx-OU-Cdn" firstAttribute="bottom" secondItem="K0r-ZN-XAv" secondAttribute="bottom" id="Jgj-gl-rRB"/>
+                                    <constraint firstItem="VHx-OU-Cdn" firstAttribute="leading" secondItem="K0r-ZN-XAv" secondAttribute="leading" id="KiY-dg-NjW"/>
+                                    <constraint firstItem="VHx-OU-Cdn" firstAttribute="top" secondItem="K0r-ZN-XAv" secondAttribute="top" id="keU-65-k9D"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="K0r-ZN-XAv"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="RIH-oM-XU3"/>
@@ -1790,7 +1793,8 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                         <constraints>
                             <constraint firstItem="IM1-15-cnp" firstAttribute="leading" secondItem="uef-u0-ThG" secondAttribute="leading" id="6Ed-k2-vQD"/>
                             <constraint firstItem="IM1-15-cnp" firstAttribute="top" secondItem="uef-u0-ThG" secondAttribute="top" id="YMb-mA-VOf"/>
-                            <constraint firstItem="VHx-OU-Cdn" firstAttribute="width" secondItem="uef-u0-ThG" secondAttribute="width" id="Zw9-1J-qne"/>
+                            <constraint firstItem="VHx-OU-Cdn" firstAttribute="width" secondItem="RIH-oM-XU3" secondAttribute="width" id="Zw9-1J-qne"/>
+                            <constraint firstItem="uef-u0-ThG" firstAttribute="trailing" secondItem="IM1-15-cnp" secondAttribute="trailing" id="sKb-oJ-uZc"/>
                             <constraint firstItem="uef-u0-ThG" firstAttribute="bottom" secondItem="IM1-15-cnp" secondAttribute="bottom" id="y9j-HI-WqV"/>
                         </constraints>
                     </view>
@@ -1883,6 +1887,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="phone" catalog="system" width="128" height="115"/>
         <image name="square.and.arrow.down" catalog="system" width="114" height="128"/>
