@@ -22,38 +22,64 @@ final class ProfileViewController: UIViewController {
     @IBOutlet weak var floorTextField: UITextField!
 
     private var isEditingProfile = false
-    private var original: ResidentProfile?   // сюда сохраним исходные данные
+    private var original: ResidentProfile?   //original one then change
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setEditingUI(false)
+        setEditingUI(false, animated: false)
         loadProfile() // загрузка из Firestore
         fullNameTextField.addTarget(self, action: #selector(nameChanged), for: .editingChanged)
     }
 
-    private func setEditingUI(_ editing: Bool) {
+    private func setEditingUI(_ editing: Bool, animated: Bool = true) {
         isEditingProfile = editing
 
-        // кнопки
-        editButton.isHidden = editing
-        saveButton.isHidden = !editing
-        cancelButton.isHidden = !editing
-
-        // включаем/выключаем редактирование полей
+        // сразу включаем/выключаем интеракцию
         let fields = [fullNameTextField, phoneTextField, emergencyTextField, flatTextField, floorTextField]
         fields.forEach { tf in
             tf?.isEnabled = editing
-            tf?.borderStyle = editing ? .roundedRect : .none
-            tf?.backgroundColor = editing ? .secondarySystemBackground : .clear
         }
 
-        // email обычно не редактируют:
+        let animations = {
+            // кнопки
+            self.editButton.alpha = editing ? 0 : 1
+            self.saveButton.alpha = editing ? 1 : 0
+            self.cancelButton.alpha = editing ? 1 : 0
+
+            // стили полей
+            fields.forEach { tf in
+                tf?.borderStyle = editing ? .roundedRect : .none
+                tf?.backgroundColor = editing ? .secondarySystemBackground : .clear
+            }
+
+            self.view.layoutIfNeeded()
+        }
+
+        let completion: (Bool) -> Void = { _ in
+            self.editButton.isHidden = editing
+            self.saveButton.isHidden = !editing
+            self.cancelButton.isHidden = !editing
+        }
+
+        if animated {
+            UIView.animate(withDuration: 0.25,
+                           delay: 0,
+                           options: [.curveEaseInOut],
+                           animations: animations,
+                           completion: completion)
+        } else {
+            animations()
+            completion(true)
+        }
+
+        // email не редактируется
         emailTextField.isEnabled = false
         emailTextField.borderStyle = .none
         emailTextField.backgroundColor = .clear
     }
 
     @IBAction func editTapped(_ sender: UIButton) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         // сохраняем текущие значения, чтобы Cancel мог откатить
         original = currentProfileFromUI()
         setEditingUI(true)
@@ -76,11 +102,11 @@ final class ProfileViewController: UIViewController {
             DispatchQueue.main.async {
                 if let err = err {
                     print("🔥 save error:", err)
-                    // можно показать alert
+                    // показать alert для дебага
                     return
                 }
                 self?.original = updated
-                // ✅ обновляем UI (включая верхний лейбл)
+                // обновляем UI
                 self?.applyProfileToUI(updated)
                 self?.setEditingUI(false)
             }
@@ -90,7 +116,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - Helpers
 
     @objc private func nameChanged() {
-        // ✅ live update верхнего имени во время ввода
+        // менять имя и фулл имя в лейблах
         let text = (fullNameTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         nameTopLabel.text = text.isEmpty ? "—" : text
     }

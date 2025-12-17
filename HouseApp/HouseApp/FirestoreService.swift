@@ -72,7 +72,7 @@ final class FirestoreService {
 
         db.collection("users")
             .document(resident.id)
-            .setData(data, merge: true, completion: completion) // merge важно!
+            .setData(data, merge: true, completion: completion) 
     }
     func fetchResident(id: String, completion: @escaping (Result<Resident, Error>) -> Void) {
         db.collection("users").document(id).getDocument { snap, err in

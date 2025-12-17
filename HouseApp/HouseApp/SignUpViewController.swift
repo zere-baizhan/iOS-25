@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController {
                 return
             }
 
-            // ✅ пишем в users/{uid}
+            // пишем в users{uid}
             let data: [String: Any] = [
                 "name": name,
                 "email": email,

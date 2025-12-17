@@ -33,7 +33,7 @@ final class ChatCell: UITableViewCell {
 
            messageLabel.numberOfLines = 0
 
-           // самое важное: создаём констрейнты в коде
+           // создание констрейнтов в коде
            bubbleStack.translatesAutoresizingMaskIntoConstraints = false
 
            leadingC = bubbleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
@@ -65,7 +65,7 @@ final class ChatCell: UITableViewCell {
            leadingC.isActive = !isMine
            trailingC.isActive = isMine
 
-           // стиль: моё справа / чужое слева
+           // мое справа/чужое слева
            if isMine {
                bubbleStack.backgroundColor = UIColor.systemBlue
                messageLabel.textColor = .white

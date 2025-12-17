@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             UserSession.shared.uid = uid
             UserSession.shared.email = result?.user.email ?? email
 
-            // загрузим профиль из Firestore users/{uid}
+            // загрузим профиль из Firestore users{uid}
             FirestoreService.shared.fetchResident(id: uid) { res in
                 DispatchQueue.main.async {
                     switch res {

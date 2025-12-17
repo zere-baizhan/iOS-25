@@ -31,7 +31,7 @@ final class CreateAnnouncementViewController: UIViewController {
         cardView.layer.cornerRadius = 16
         cardView.clipsToBounds = true
 
-        // placeholder для TextView (если хочешь)
+        // placeholder for TextView 
         contentTextView.layer.cornerRadius = 10
         contentTextView.layer.borderWidth = 1
         contentTextView.layer.borderColor = UIColor.systemGray4.cgColor

@@ -48,7 +48,7 @@ final class HomeViewController: UIViewController {
                     self?.resident = r
                     self?.refreshUI()
                 case .failure:
-                    // fallback если нет дока
+                    // fallback если нет дока 
                     self?.resident = Resident(
                         id: uid,
                         name: UserSession.shared.name,

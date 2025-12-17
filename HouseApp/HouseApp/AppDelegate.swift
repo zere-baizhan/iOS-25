@@ -19,12 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("📦 bundle:", Bundle.main.bundleIdentifier ?? "nil")
         print("✅ Firebase app:", FirebaseApp.app() != nil)
 
-        if let opt = FirebaseApp.app()?.options {
-            print("🔑 apiKey:", opt.apiKey)
-            print("🆔 googleAppID:", opt.googleAppID)
-            print("📨 senderID:", opt.gcmSenderID ?? "nil")
-            print("🏷 projectID:", opt.projectID ?? "nil")
-        }
+    
 
       return true
     }
