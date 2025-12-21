@@ -15,6 +15,7 @@ final class UserSession {
     var uid: String = ""
     var email: String = ""
     var name: String = ""
+    var role: String = "resident"
 
     var isLoggedIn: Bool { !uid.isEmpty }
 
@@ -29,5 +30,6 @@ final class UserSession {
         uid = ""
         email = ""
         name = ""
+        role = "resident"
     }
 }

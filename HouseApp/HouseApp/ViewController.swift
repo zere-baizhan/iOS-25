@@ -49,42 +49,49 @@ class ViewController: UIViewController {
     @IBAction func signInTapped(_ sender: UIButton) {
         let email = (emailTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         let password = (passwordTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-
+        
         guard !email.isEmpty, !password.isEmpty else {
             showAlert(title: "Error", message: "Enter email and password.")
             return
         }
-
+        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
             guard let self = self else { return }
-
+            
             if let error = error {
                 DispatchQueue.main.async {
                     self.showAlert(title: "Error", message: error.localizedDescription)
                 }
                 return
             }
-
+            
             guard let uid = result?.user.uid else {
                 DispatchQueue.main.async {
                     self.showAlert(title: "Error", message: "No user id.")
                 }
                 return
             }
-
+            
+            // обновим сессию
             // обновим сессию
             UserSession.shared.uid = uid
             UserSession.shared.email = result?.user.email ?? email
-
-            // загрузим профиль из Firestore users{uid}
-            FirestoreService.shared.fetchResident(id: uid) { res in
+            
+            FirestoreService.shared.fetchUserRole(uid: uid) { role in
                 DispatchQueue.main.async {
-                    switch res {
-                    case .success(let resident):
-                        self.currentResident = resident
-                        self.performSegue(withIdentifier: "showMainTabs", sender: self)
-                    case .failure(let err):
-                        self.showAlert(title: "Error", message: "Profile not found: \(err.localizedDescription)")
+                    UserSession.shared.role = role
+                    
+                    // грузим профиль resident (можно оставить как есть)
+                    FirestoreService.shared.fetchResident(id: uid) { res in
+                        DispatchQueue.main.async {
+                            switch res {
+                            case .success(let resident):
+                                self.currentResident = resident
+                                self.performSegue(withIdentifier: "showMainTabs", sender: self)
+                            case .failure(let err):
+                                self.showAlert(title: "Error", message: "Profile not found: \(err.localizedDescription)")
+                            }
+                        }
                     }
                 }
             }

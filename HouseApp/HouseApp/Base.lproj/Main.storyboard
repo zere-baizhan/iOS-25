@@ -843,10 +843,10 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
             </objects>
             <point key="canvasLocation" x="1180.9160305343512" y="1576.7605633802818"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="l2i-vx-lNa">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="FKP-f8-QO5" sceneMemberID="viewController">
+                <tabBarController modalPresentationStyle="fullScreen" id="FKP-f8-QO5" customClass="MainTabBarController" customModule="HouseApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Fr8-pG-XaT"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LRx-LJ-xrF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
@@ -859,11 +859,94 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
                         <segue destination="MQR-gJ-CDZ" kind="relationship" relationship="viewControllers" id="Euz-4D-iRi"/>
                         <segue destination="o8n-TV-fyD" kind="relationship" relationship="viewControllers" id="hES-WS-hz4"/>
                         <segue destination="VDB-K3-1Zk" kind="relationship" relationship="viewControllers" id="D40-at-L0q"/>
+                        <segue destination="6YZ-UC-6FN" kind="relationship" relationship="viewControllers" id="4Yo-Z8-pcE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGf-zx-RM1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="112"/>
+        </scene>
+        <!--Technician-->
+        <scene sceneID="iT8-u6-9Ga">
+            <objects>
+                <viewController id="6YZ-UC-6FN" userLabel="Technician" customClass="TechnicianReportsViewController" customModule="HouseApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="atT-Ba-DzX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Panel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkO-ia-FIz">
+                                <rect key="frame" x="16" y="178" width="361" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-1q-ir9">
+                                <rect key="frame" x="16" y="217" width="361" height="32"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Pending"/>
+                                    <segment title="In Progress"/>
+                                    <segment title="Resolved"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="6YZ-UC-6FN" eventType="valueChanged" id="6fE-Nw-jct"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K8y-A7-qwt">
+                                <rect key="frame" x="0.0" y="260" width="393" height="475"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReportCell" textLabel="LDx-2v-YDp" detailTextLabel="541-Bn-qEd" style="IBUITableViewCellStyleSubtitle" id="PhL-0V-WUg">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PhL-0V-WUg" id="N4r-bJ-lZ2">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LDx-2v-YDp">
+                                                    <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="detailTextLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="541-Bn-qEd">
+                                                    <rect key="frame" x="20" y="22.333333333333336" width="85.666666666666671" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pLO-wU-w8p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VHM-1q-ir9" firstAttribute="top" secondItem="DkO-ia-FIz" secondAttribute="bottom" constant="12" id="5Jx-HQ-pqT"/>
+                            <constraint firstItem="DkO-ia-FIz" firstAttribute="leading" secondItem="pLO-wU-w8p" secondAttribute="leading" constant="16" id="ErD-4D-e4F"/>
+                            <constraint firstItem="VHM-1q-ir9" firstAttribute="leading" secondItem="pLO-wU-w8p" secondAttribute="leading" constant="16" id="Fxb-hn-8Pd"/>
+                            <constraint firstItem="DkO-ia-FIz" firstAttribute="top" secondItem="pLO-wU-w8p" secondAttribute="top" constant="16" id="Gex-xo-Zes"/>
+                            <constraint firstItem="pLO-wU-w8p" firstAttribute="bottom" secondItem="K8y-A7-qwt" secondAttribute="bottom" id="LlS-BD-QyY"/>
+                            <constraint firstItem="K8y-A7-qwt" firstAttribute="top" secondItem="VHM-1q-ir9" secondAttribute="bottom" constant="12" id="Re9-Qw-Awu"/>
+                            <constraint firstItem="pLO-wU-w8p" firstAttribute="trailing" secondItem="K8y-A7-qwt" secondAttribute="trailing" id="bvD-0L-ZFc"/>
+                            <constraint firstItem="K8y-A7-qwt" firstAttribute="leading" secondItem="pLO-wU-w8p" secondAttribute="leading" id="hzq-AX-5rj"/>
+                            <constraint firstItem="pLO-wU-w8p" firstAttribute="trailing" secondItem="DkO-ia-FIz" secondAttribute="trailing" constant="16" id="nkz-tx-x1L"/>
+                            <constraint firstItem="pLO-wU-w8p" firstAttribute="trailing" secondItem="VHM-1q-ir9" secondAttribute="trailing" constant="16" id="uk3-cW-laW"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="long.text.page.and.pencil.fill" catalog="system" id="fDv-P4-9VR"/>
+                    <connections>
+                        <outlet property="statusSegment" destination="VHM-1q-ir9" id="YM3-QZ-eWf"/>
+                        <outlet property="tableView" destination="K8y-A7-qwt" id="Fwz-yL-Pix"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UtJ-UT-KCU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924" y="86"/>
         </scene>
         <!--AnnouncementsViewController-->
         <scene sceneID="C1A-HU-i2N">
@@ -1902,6 +1985,7 @@ Use the navigation below to access announcements, chat with neighbors, submit ma
         <image name="homekit" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="light.beacon.min.fill" catalog="system" width="128" height="106"/>
+        <image name="long.text.page.and.pencil.fill" catalog="system" width="112" height="128"/>
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>

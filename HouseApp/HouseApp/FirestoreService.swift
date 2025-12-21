@@ -149,6 +149,29 @@ final class FirestoreService {
                     completion(.success(list))
                 }
         }
+    func fetchUserRole(uid: String, completion: @escaping (String) -> Void) {
+        db.collection("users").document(uid).getDocument { snap, _ in
+            let role = (snap?.data()?["role"] as? String) ?? "resident"
+            completion(role)
+        }
+    }
+    func updateReport(reportId: String, status: String, resolutionText: String, completion: @escaping (Error?) -> Void) {
+        let data: [String: Any] = [
+            "status": status,
+            "resolutionText": resolutionText
+        ]
+        db.collection("maintenance_reports").document(reportId).updateData(data, completion: completion)
+    }
+
+    // Overload used by TechnicianReportsViewController (update only the fields you pass)
+    func updateReport(reportId: String, data: [String: Any], completion: @escaping (Error?) -> Void) {
+        db.collection("maintenance_reports")
+            .document(reportId)
+            .updateData(data, completion: completion)
+    }
+    func deleteReport(reportId: String, completion: @escaping (Error?) -> Void) {
+        db.collection("maintenance_reports").document(reportId).delete(completion: completion)
+    }
     func createReport(title: String,
                           category: String,
                           details: String,
