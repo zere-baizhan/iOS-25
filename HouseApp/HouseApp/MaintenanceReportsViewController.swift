@@ -12,6 +12,7 @@ import FirebaseAuth
 
 final class MaintenanceReportsViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newReportButton: UIButton!
 
@@ -53,6 +54,13 @@ final class MaintenanceReportsViewController: UIViewController {
                                                selector: #selector(applyTexts),
                                                name: .languageChanged,
                                                object: nil)
+        [allButton, pendingButton, inProgressButton, resolvedButton].forEach { b in
+            b?.titleLabel?.numberOfLines = 1
+            b?.titleLabel?.lineBreakMode = .byTruncatingTail
+            b?.titleLabel?.adjustsFontSizeToFitWidth = true
+            b?.titleLabel?.minimumScaleFactor = 0.7
+            b?.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        }
     }
 
     deinit { listener?.remove() }
@@ -70,6 +78,7 @@ final class MaintenanceReportsViewController: UIViewController {
         inProgressButton.setTitle("report_status_in_progress".L, for: .normal)
         resolvedButton.setTitle("report_status_resolved".L, for: .normal)
         newReportButton.setTitle("new_badge".L, for: .normal)
+        titleLabel.text = "maintenance_reports".L
 
     }
 

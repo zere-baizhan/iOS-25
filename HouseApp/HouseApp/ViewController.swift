@@ -21,10 +21,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInCardButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var helperLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var signLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
     var currentResident: Resident?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyTexts()
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(applyTexts),
+                name: .languageChanged,
+                object: nil)
     }
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title,
@@ -91,6 +103,20 @@ class ViewController: UIViewController {
                 homeVC.resident = currentResident
             }
         }
+    }
+    
+    @objc private func applyTexts() {
+        helperLabel.text = "dont_have_account".L
+        emailLabel.text = "email".L
+        welcomeLabel.text="welcome_title".L
+        signLabel.text="sign_in_to_access".L
+        passwordLabel.text="password".L
+        signInButton.setTitle("sign_in".L, for: .normal)
+        emergencyButton.setTitle("emergency".L, for: .normal)
+        signInCardButton.setTitle("sign_in".L, for: .normal)
+        signUpButton.setTitle("sign_up".L, for: .normal)
+
+
     }
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         print("Sign Up tapped")   // для проверки

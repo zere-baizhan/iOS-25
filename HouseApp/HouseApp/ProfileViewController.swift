@@ -13,6 +13,7 @@ final class ProfileViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTopLabel: UILabel!
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,6 +22,15 @@ final class ProfileViewController: UIViewController {
     @IBOutlet weak var flatTextField: UITextField!
     @IBOutlet weak var floorTextField: UITextField!
 
+    @IBOutlet weak var personalinfoLabel: UILabel!
+    @IBOutlet weak var fullnameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var flatLabel: UILabel!
+    
+    @IBOutlet weak var floorLabel: UILabel!
+    @IBOutlet weak var emergencyLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    
     private var isEditingProfile = false
     private var original: ResidentProfile?   //original one then change
 
@@ -29,6 +39,29 @@ final class ProfileViewController: UIViewController {
         setEditingUI(false, animated: false)
         loadProfile() // загрузка из Firestore
         fullNameTextField.addTarget(self, action: #selector(nameChanged), for: .editingChanged)
+        applyTexts()
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(applyTexts),
+                name: .languageChanged,
+                object: nil)
+    }
+    @objc private func applyTexts() {
+        personalinfoLabel.text = "personal_info".L
+        fullnameLabel.text = "full_name".L
+        emailLabel.text = "email".L
+        flatLabel.text = "flat_number".L
+        floorLabel.text = "floor".L
+        emergencyLabel.text = "emergency_contact".L
+        phoneLabel.text = "phone_number".L
+        titleLabel.text = "resident_profile".L
+
+        
+        editButton.setTitle("edit".L, for: .normal)
+        saveButton.setTitle("save".L, for: .normal)
+        cancelButton.setTitle("cancel".L, for: .normal)
+
+
     }
 
     private func setEditingUI(_ editing: Bool, animated: Bool = true) {

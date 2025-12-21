@@ -94,3 +94,5 @@
 "account_created" = "Account created successfully";
 "wrong_email_or_password" = "Wrong email or password";
 
+"personal_info" = "Personal Information";
+"resident_profile" = "Resident Profile";
