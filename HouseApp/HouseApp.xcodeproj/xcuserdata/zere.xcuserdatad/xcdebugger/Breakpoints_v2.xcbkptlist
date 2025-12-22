@@ -30,10 +30,10 @@
             filePath = "HouseApp/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "signUpButtonTapped(_:)"
-            landmarkType = "9">
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "applyTexts()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

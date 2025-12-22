@@ -96,3 +96,10 @@
 
 "personal_info" = "Personal Information";
 "resident_profile" = "Resident Profile";
+
+"admin_label"="Admin Panel";
+"update_report_title" = "Update report";
+"resolution_placeholder" = "Resolution text";
+"resolution_title" = "Resolution";
+"resolution_message" = "Write what was done";
+"resolution_placeholder" = "e.g. Faucet washer replaced";

@@ -87,6 +87,7 @@ class ViewController: UIViewController {
                             switch res {
                             case .success(let resident):
                                 self.currentResident = resident
+                                UserSession.shared.name = resident.name
                                 self.performSegue(withIdentifier: "showMainTabs", sender: self)
                             case .failure(let err):
                                 self.showAlert(title: "Error", message: "Profile not found: \(err.localizedDescription)")

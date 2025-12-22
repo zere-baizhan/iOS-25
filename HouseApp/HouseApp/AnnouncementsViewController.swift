@@ -19,6 +19,43 @@ final class AnnouncementsViewController: UIViewController {
     private var filteredItems: [Announcement] = []
     private var searchController: UISearchController!
 
+    private lazy var dateFormatters: [DateFormatter] = {
+        func make(_ format: String) -> DateFormatter {
+            let df = DateFormatter()
+            df.locale = Locale(identifier: "en_US_POSIX")
+            df.dateFormat = format
+            return df
+        }
+        return [
+            make("dd MMM yyyy"),   // 22 Dec 2025
+            make("d MMM yyyy"),    // 2 Dec 2025
+            make("dd.MM.yyyy"),    // 22.12.2025
+            make("d.M.yyyy"),      // 2.12.2025
+            make("yyyy-MM-dd"),    // 2025-12-22
+            make("dd/MM/yyyy"),    // 22/12/2025
+            make("d/M/yyyy")       // 2/12/2025
+        ]
+    }()
+
+    private func applyFilter(_ text: String) {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !trimmed.isEmpty else {
+            filteredItems = allItems
+            return
+        }
+
+        filteredItems = allItems.filter { a in
+            let titleMatch = a.title.lowercased().contains(trimmed)
+            let contentMatch = a.content.lowercased().contains(trimmed)
+
+            // Search by date in multiple formats
+            let dateStrings = dateFormatters.map { $0.string(from: a.date).lowercased() }
+            let dateMatch = dateStrings.contains(where: { $0.contains(trimmed) })
+
+            return titleMatch || contentMatch || dateMatch
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -79,17 +116,7 @@ final class AnnouncementsViewController: UIViewController {
             }
         }
     }
-    
-    private func applyFilter(_ text: String) {
-        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        if trimmed.isEmpty {
-            filteredItems = allItems
-        } else {
-            filteredItems = allItems.filter {
-                $0.title.lowercased().contains(trimmed) || $0.content.lowercased().contains(trimmed)
-            }
-        }
-    }
+
 
     @IBAction func newAnnouncementTapped(_ sender: UIButton) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -103,7 +130,7 @@ final class AnnouncementsViewController: UIViewController {
         present(vc, animated: true)
     }
 
-    
+
 }
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
 

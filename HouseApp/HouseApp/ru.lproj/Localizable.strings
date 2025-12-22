@@ -95,3 +95,11 @@
 "personal_info" = "Личная Информация";
 "resident_profile" = "Профиль Жителя";
 
+"admin_label"="Панель Админа";
+"update_report_title" = "Обновить отчет";
+"resolution_placeholder" = "Текст решения";
+"resolution_title" = "Решение";
+"resolution_message" = "Опишите, что было сделано";
+"resolution_placeholder" = "например: заменена прокладка";
+
+

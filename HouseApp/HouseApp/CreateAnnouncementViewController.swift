@@ -64,12 +64,12 @@ final class CreateAnnouncementViewController: UIViewController {
             return
         }
 
-        let author = "Admin"
+        let authorName = UserSession.shared.name.isEmpty ? "User" : UserSession.shared.name
 
         FirestoreService.shared.addAnnouncement(
             title: title,
             content: content,
-            author: author
+            author: authorName
         ) { [weak self] error in
             DispatchQueue.main.async {
                 if let error = error {
